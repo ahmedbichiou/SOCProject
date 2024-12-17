@@ -2,6 +2,7 @@ const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
 const { buildSchema } = require('graphql');
 const fs = require('fs');
+const swaggerUi = require('swagger-ui-express');
 
 // Load Nvidia EOD data from JSON file
 let stockData;
@@ -66,6 +67,47 @@ app.use('/graphql', graphqlHTTP({
     graphiql: true, // Enable GraphiQL interface
 }));
 
+const swaggerDocument = {
+  openapi: '3.0.0',
+  info: {
+    title: 'GraphQL Stock API',
+    version: '1.0.0',
+    description: 'GraphQL API for NVIDIA stock data',
+  },
+  servers: [
+    {
+      url: 'http://localhost:3000/graphql',
+    },
+  ],
+  paths: {
+    '/graphql': {
+      post: {
+        description: 'GraphQL endpoint',
+        requestBody: {
+          content: {
+            'application/json': {
+              examples: {
+                'Get Stock Data': {
+                  value: {
+                    query: '{ stockData(date: "2024-09-30") { date exchange open high low close } }'
+                  }
+                },
+                'Compare Stocks': {
+                  value: {
+                    query: '{ compareStocks(date1: "2024-09-30", date2: "2024-09-27") { date exchange open high low close } }'
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+};
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 // Start the server
 const PORT = 3000;
 app.listen(PORT, () => {
@@ -87,4 +129,4 @@ app.listen(PORT, () => {
     "query": "{ compareStocks(date1: \"2024-09-30\", date2: \"2024-09-27\") { date exchange open high low close } }"
 }
     
-*/   
+*/
