@@ -1,0 +1,31 @@
+services:
+  rest-service:
+    build:
+      context: ./rest-service
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    networks:
+      - app-network
+
+  graphql-service:
+    build:
+      context: ./graphql-service
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+
+  soap-service:
+    build:
+      context: ./soap-service
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
