@@ -27,6 +27,7 @@ const CompareStock = () => {
           startDate.format('YYYY-MM-DD'),
           compareDate.format('YYYY-MM-DD')
         );
+        console.log(data)
         setComparisonData(data);
         setError(null);
       } catch (err: any) {
@@ -60,7 +61,7 @@ const series = [
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <Typography variant="h4" gutterBottom>
-              Compare Nvidia Stock Data
+              Compare Nvidia Stock Data REST
             </Typography>
           </Grid>
 

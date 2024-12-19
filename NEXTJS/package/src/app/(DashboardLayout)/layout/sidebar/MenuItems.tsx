@@ -28,29 +28,24 @@ const Menuitems = [
   },
   {
     id: uniqueId(),
-    title: "SOAP",
+    title: "SOAP View Date",
     icon: IconLayoutDashboard,
     href: "/SOC/SOAP",
   },
-  {
-    id: uniqueId(),
-    title: "SOAP VIEW",
-    icon: IconAperture,
-    href: "/SOC/SOAPVIEW",
-  },
+
   {
     navlabel: true,
     subheader: "REST",
   },
   {
     id: uniqueId(),
-    title: "REST",
+    title: "REST Compare dates",
     icon: IconLayoutDashboard,
     href: "/SOC/REST",
   },
   {
     id: uniqueId(),
-    title: "REST VIEW",
+    title: "REST View Date",
     icon: IconAperture,
     href: "/SOC/RESTVIEW",
   },
@@ -60,13 +55,13 @@ const Menuitems = [
   },
   {
     id: uniqueId(),
-    title: "GRAPHQL",
+    title: "GRAPHQL Compare dates",
     icon: IconLayoutDashboard,
     href: "/SOC/GRAPHQL",
   },
   {
     id: uniqueId(),
-    title: "GRAPHQL VIEW",
+    title: "GRAPHQL View Date",
     icon: IconAperture,
     href: "/SOC/GRAPHQLVIEW",
   },

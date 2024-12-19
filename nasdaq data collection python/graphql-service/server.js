@@ -2,7 +2,9 @@ const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
 const { buildSchema } = require('graphql');
 const fs = require('fs');
+const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
+
 
 // Load Nvidia EOD data from JSON file
 let stockData;
@@ -61,6 +63,7 @@ const root = {
 
 // Set up Express and GraphQL
 const app = express();
+app.use(cors());
 app.use('/graphql', graphqlHTTP({
     schema: schema,
     rootValue: root,

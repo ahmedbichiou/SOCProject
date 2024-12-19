@@ -1,9 +1,10 @@
 const soap = require('soap');
 const express = require('express');
 const fs = require('fs');
-
+const cors = require('cors');
 const app = express();
 const PORT = 8080;
+app.use(cors());
 
 // Load the Nvidia EOD data from JSON file
 let stockData;
